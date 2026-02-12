@@ -1,4 +1,3 @@
-# Easy Pay - Community Electricity Billing Platform
 
 # Easy Pay - Community Electricity Billing Platform
 
@@ -50,49 +49,81 @@ Easy Pay is a **digital platform for community electricity payments**, allowing 
 git clone https://github.com/yourusername/easypay.git
 cd easypay
 
+2. Install depencies
+composer install
+npm install
+npm run dev
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+3. Copy .env file and configure Database
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+cp .env.example .env
+php artisan key:generate
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+4. Set Database Connection
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=easypay
+DB_USERNAME=root
+DB_PASSWORD=
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+5. Run Migrations
+php artisan migrate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+6. Serve the application
+php artisan serve
 
-## Laravel Sponsors
+7. Test the app on a browser
+http://127.0.0.1:8000
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+### Routes Overview
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+| Route | Method | Description |
+|-------|--------|-------------|
+| `/` | GET | Home Page |
+| `/register-household` | GET/POST | Create new household |
+| `/login` | GET/POST | User login |
+| `/paybill` | GET/POST | Make payment using household ID |
+| `/payments` | GET | View all payments (admin) |
+| `/feedback` | POST | Submit feedback/complaint |
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Household Table
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | bigint | Primary key |
+| unique_id | string | Unique household code |
+| household_name | string | Name of household |
+| code_no | string | Household code number |
+| address | string | Street address |
+| village | string | Village name |
+| town | string | Town name |
+| lga | string | Local government area |
+| contact_phone | string | Contact phone number |
+| contact_email | string | Contact email |
+| household_type | enum | Basic, Bungalow, Duplex |
+| created_at | timestamp | Timestamp |
+| updated_at | timestamp | Timestamp |
+
+### Payments Table
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | bigint | Primary key |
+| household_id | bigint | Foreign key to households |
+| amount | integer | Payment amount |
+| status | string | Paid / Pending |
+| created_at | timestamp | Timestamp |
+| updated_at | timestamp | Timestamp |
+
+
+
 
 ## Security Vulnerabilities
 
