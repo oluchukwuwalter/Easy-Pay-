@@ -1,5 +1,56 @@
 # Easy Pay - Community Electricity Billing Platform
 
+# Easy Pay - Community Electricity Billing Platform
+
+![Easy Pay Logo](public/images/logo.png)
+
+Easy Pay is a **digital platform for community electricity payments**, allowing households to register, pay bills online, and track payments in real time. It automates billing, supports multiple payment channels, and provides administrators with real-time dashboards and audit trails.
+
+---
+
+## Table of Contents
+
+- [Features](#features)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Routes](#routes)  
+- [Database Schema](#database-schema)  
+- [Contributing](#contributing)  
+- [License](#license)  
+
+---
+
+## Features
+
+- Automated monthly billing for registered households  
+- Unique household ID system  
+- Multiple payment channels  
+- Real-time analytics dashboard  
+- Payment reconciliation and audit trails  
+- User authentication (login/register)  
+- Feedback & complaint submission  
+- Testimonials carousel on homepage  
+
+---
+
+## Installation
+
+### Prerequisites
+
+- PHP >= 8.1  
+- Composer  
+- MySQL or MariaDB  
+- Node.js & npm (for Laravel Mix/Assets)  
+
+### Steps
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/easypay.git
+cd easypay
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
